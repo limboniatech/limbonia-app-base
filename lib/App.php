@@ -347,6 +347,23 @@ abstract class App
   }
 
   /**
+   * Output the specified data as JSON
+   *
+   * @param unknown $xData
+   */
+  public static function outputJson($xData)
+  {
+    if (static::isWeb())
+    {
+      header("Cache-Control: no-cache, must-revalidate");
+      header("Expires: Sat, 01 Jan 2000 00:00:00 GMT");
+      header("Content-Type: application/json");
+    }
+
+      return json_encode($xData);
+  }
+
+  /**
    * PSR-4 compatible autoload method
    *
    * @param string $sClassName
