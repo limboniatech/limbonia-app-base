@@ -1,5 +1,5 @@
 <?php
-namespace Limbonia\Model;
+namespace Limbonia\Model\Base;
 
 /**
  * Limbonia Resource Model Class
