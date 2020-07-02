@@ -349,7 +349,7 @@ abstract class App
   /**
    * Output the specified data as JSON
    *
-   * @param unknown $xData
+   * @param mixed $xData
    */
   public static function outputJson($xData)
   {
