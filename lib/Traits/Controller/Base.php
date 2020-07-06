@@ -49,6 +49,40 @@ trait Base
   ];
 
   /**
+   * List of components that this controller contains along with their descriptions
+   *
+   * @var array
+   */
+  protected static $hComponent =
+  [
+    'search' => 'This is the ability to search and display data.',
+    'edit' => 'The ability to edit existing data.',
+    'create' => 'The ability to create new data.',
+    'delete' => 'The ability to delete existing data.'
+  ];
+
+  /**
+   * List of components that this controller contains along with their descriptions
+   *
+   * @var array
+   */
+  protected static $hRealComponent =
+  [
+    'list' => 'search',
+    'editcolumn' => 'edit'
+  ];
+
+  /**
+   * Return the list of this controller's components
+   *
+   * @return array
+   */
+  public static function getComponents()
+  {
+    return static::$hComponent;
+  }
+
+  /**
    * Instantiate a controller
    *
    * @param \Limbonia\App $oApp
@@ -117,24 +151,26 @@ trait Base
   }
 
   /**
-   * Return a valid component name from the specified menu item
+   * Return a valid component from the specified component name, if possible
    *
-   * @param string $sMenuModel
+   * @param string $sComponentName
    * @return string
    */
-  protected function getComponent($sMenuModel)
+  protected function getComponent($sComponentName)
   {
-    if ($sMenuModel == 'list')
+    $sLowerName = \strtolower($sComponentName);
+
+    if (isset(static::$hRealComponent[$sLowerName]))
     {
-      return 'search';
+      $sLowerName = static::$hRealComponent[$sLowerName];
     }
 
-    if ($sMenuModel == 'editcolumn')
+    if (!isset(static::$hComponent[$sLowerName]))
     {
-      return 'edit';
+      return '';
     }
 
-    return $sMenuModel;
+    return $sLowerName;
   }
 
   /**
