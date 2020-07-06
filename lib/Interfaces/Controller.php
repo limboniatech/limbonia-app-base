@@ -4,6 +4,13 @@ namespace Limbonia\Interfaces;
 interface Controller
 {
   /**
+   * Return the list of this controller's components
+   *
+   * @return array
+   */
+  static function getComponents();
+
+  /**
    * Activate this controller and any required dependencies then return a list of types that were activated
    *
    * @param array $hActiveController - the active controller list
@@ -27,6 +34,14 @@ interface Controller
    * @throws \Limbonia\Exception on failure
    */
   function deactivate(array $hActiveController);
+
+  /**
+   * Should the specified component type be allowed to be used by the current user of this controller?
+   *
+   * @param string $sComponent
+   * @return boolean
+   */
+  public function allow($sComponent);
 
   /**
    * Generate and return the URI for the specified parameters
