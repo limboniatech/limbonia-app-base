@@ -69,7 +69,7 @@ interface User
   /**
    * Delete the specified auth_token from this user
    *
-   * @param type $sAuthToken
+   * @param string $sAuthToken
    * @return boolean
    * @throws \Limbonia\Exception
    */

@@ -172,7 +172,7 @@ abstract class App
   /**
    * The logged in user
    *
-   * @var \Limbonia\Model\User
+   * @var \Limbonia\Interfaces\Model\User
    */
   protected $oUser = null;
 
@@ -1440,7 +1440,7 @@ PRIMARY KEY(Type)");
    * Return the user represented by the specified email, if there is one
    *
    * @param string $sEmail
-   * @return \Limbonia\Model\User
+   * @return \Limbonia\Interfaces\Model\User
    */
   public function userByEmail($sEmail)
   {
@@ -1452,7 +1452,7 @@ PRIMARY KEY(Type)");
   /**
    * Return a default admin User object
    *
-   * @return \Limbonia\Model\User
+   * @return \Limbonia\Interfaces\Model\User
    */
   public function userAdmin()
   {
@@ -1464,7 +1464,7 @@ PRIMARY KEY(Type)");
   /**
    * Return the currently logged in user
    *
-   * @return \Limbonia\Model\User
+   * @return \Limbonia\Interfaces\Model\User
    */
   public function user()
   {
@@ -1474,7 +1474,7 @@ PRIMARY KEY(Type)");
   /**
    * Generate and return the current user
    *
-   * @return \Limbonia\Model\User
+   * @return \Limbonia\Interfaces\Model\User
    * @throws \Exception
    */
   protected function generateUser()
