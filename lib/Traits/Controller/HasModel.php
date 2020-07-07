@@ -14,6 +14,30 @@ trait HasModel
   use \Limbonia\Traits\HasType;
 
   /**
+   * List of components that this controller contains along with their descriptions
+   *
+   * @var array
+   */
+  protected static $hDefaultModelComponent =
+  [
+    'search' => 'This is the ability to search and display data.',
+    'edit' => 'The ability to edit existing data.',
+    'create' => 'The ability to create new data.',
+    'delete' => 'The ability to delete existing data.'
+  ];
+
+  /**
+   * List of components that this controller contains along with their descriptions
+   *
+   * @var array
+   */
+  protected static $hDefaultModelRealComponent =
+  [
+    'list' => 'search',
+    'editcolumn' => 'edit'
+  ];
+
+  /**
    * The type of Model that this controller uses
    *
    * @var string
@@ -66,6 +90,16 @@ trait HasModel
     if (\method_exists($this, $sTypeModelInit))
     {
       $this->$sTypeModelInit();
+    }
+
+    if (empty(static::$hComponent) && !empty(static::$hDefaultModelComponent))
+    {
+      static::$hComponent = static::$hDefaultModelComponent;
+    }
+
+    if (empty(static::$hRealComponent) && !empty(static::$hDefaultModelRealComponent))
+    {
+      static::$hRealComponent = static::$hDefaultModelRealComponent;
     }
   }
 
