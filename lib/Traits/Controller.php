@@ -53,24 +53,14 @@ trait Controller
    *
    * @var array
    */
-  protected static $hComponent =
-  [
-    'search' => 'This is the ability to search and display data.',
-    'edit' => 'The ability to edit existing data.',
-    'create' => 'The ability to create new data.',
-    'delete' => 'The ability to delete existing data.'
-  ];
+  protected static $hComponent = [];
 
   /**
    * List of components that this controller contains along with their descriptions
    *
    * @var array
    */
-  protected static $hRealComponent =
-  [
-    'list' => 'search',
-    'editcolumn' => 'edit'
-  ];
+  protected static $hRealComponent = [];
 
   /**
    * Return the list of this controller's components
@@ -92,7 +82,11 @@ trait Controller
     $this->oApp = $oApp;
     $this->oRouter = is_null($this->oRouter) ? $this->oApp->getRouter() : $oRouter;
     $this->getType();
-    $this->init();
+
+    if (!$this->bInit)
+    {
+      $this->init();
+    }
   }
 
   /**
@@ -148,6 +142,7 @@ trait Controller
    */
   protected function init()
   {
+    $this->bInit = true;
   }
 
   /**
