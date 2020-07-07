@@ -1,8 +1,7 @@
 <?php
+namespace Limbonia\Traits\Model\User;
 
-namespace Limbonia\Traits\Model;
-
-trait UserCanBeContact
+trait CanBeContact
 {
   /**
    *  Is this user a contact?

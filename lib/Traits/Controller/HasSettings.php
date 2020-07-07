@@ -2,7 +2,7 @@
 
 namespace Limbonia\Traits\Controller;
 
-trait Settings
+trait HasSettings
 {
   /**
    * List of fields used by controller settings

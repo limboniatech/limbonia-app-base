@@ -1,8 +1,7 @@
 <?php
+namespace Limbonia\Traits\Model\User;
 
-namespace Limbonia\Traits\Model;
-
-trait UserHasTickets
+trait HasTickets
 {
   /**
    * Return the list of open tickets owned by this user

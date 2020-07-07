@@ -9,7 +9,7 @@ namespace Limbonia\Traits\Controller;
  * @author Lonnie Blansett <lonnie@limbonia.tech>
  * @package Limbonia
  */
-trait BaseModel
+trait HasModel
 {
   use \Limbonia\Traits\HasType;
 
@@ -40,7 +40,7 @@ trait BaseModel
    *
    * @throws \Limbonia\Exception
    */
-  protected function init()
+  protected function modelInit()
   {
     if (empty($this->sModelType))
     {
@@ -61,10 +61,11 @@ trait BaseModel
       $this->oModel->load($this->oRouter->id);
     }
 
-    if ($this->oModel->id > 0)
+    $sTypeModelInit = \strtolower($this->getType()) . 'ModelInit';
+
+    if (\method_exists($this, $sTypeModelInit))
     {
-      $this->hMenuItems['model'] = 'Model';
-      $this->aAllowedActions[] = 'model';
+      $this->$sTypeModelInit();
     }
   }
 
@@ -78,6 +79,11 @@ trait BaseModel
     return $this->oModel;
   }
 
+  /**
+   * Generate and return a model of the correct internal type based on the data passed
+   * 
+   * @return \Limbonia\Model
+   */
   protected function modelFromArray($hModel)
   {
     $sTable = $this->oModel->getTable();

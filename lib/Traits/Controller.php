@@ -1,7 +1,7 @@
 <?php
-namespace Limbonia\Traits\Controller;
+namespace Limbonia\Traits;
 
-trait Base
+trait Controller
 {
   use \Limbonia\Traits\DriverList;
   use \Limbonia\Traits\HasApp;

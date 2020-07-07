@@ -1,8 +1,7 @@
 <?php
+namespace Limbonia\Traits\Model\User;
 
-namespace Limbonia\Traits\Model;
-
-trait UserHasRoles
+trait HasRoles
 {
   /**
    * Return the list of resource keys and their levels that this role has
