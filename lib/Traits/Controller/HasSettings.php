@@ -1,5 +1,4 @@
 <?php
-
 namespace Limbonia\Traits\Controller;
 
 trait HasSettings
@@ -25,16 +24,23 @@ trait HasSettings
    */
   protected $bChangedSettings = false;
 
-  protected function construct()
+  protected function settingsConstruct()
   {
-      $this->hSettings = $this->oApp->getSettings($this->sType);
+    $this->hSettings = $this->oApp->getSettings($this->sType);
 
-      if (empty($this->hSettings))
-      {
-        $this->hSettings = $this->defaultSettings();
-        $this->bChangedSettings = true;
-        $this->saveSettings();
-      }
+    if (empty($this->hSettings))
+    {
+      $this->hSettings = $this->defaultSettings();
+      $this->bChangedSettings = true;
+      $this->saveSettings();
+    }
+
+    $sTypeSettingsConstruct = \strtolower($this->getType()) . 'SettingsConstruct';
+
+    if (\method_exists($this, $sTypeSettingsConstruct))
+    {
+      $this->$sTypeSettingsConstruct();
+    }
   }
 
   /**
